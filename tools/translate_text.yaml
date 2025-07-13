@@ -1,0 +1,40 @@
+identity:
+  name: translate_text
+  author: langgenius
+  label:
+    en_US: 翻译文本
+description:
+  human:
+    en_US: 将文本从一种语言翻译为另一种语言
+  llm: 将文本从一种语言翻译为另一种语言
+parameters:
+- name: text
+  type: string
+  required: true
+  label:
+    en_US: 待翻译文本
+  human_description:
+    en_US: 需要翻译的文本内容
+  llm_description: 需要翻译的文本内容
+  form: llm
+- name: from_language
+  type: string
+  required: false
+  label:
+    en_US: 源语言
+  human_description:
+    en_US: 源语言代码，例如：zh(中文)、en(英文)、ja(日文)、ko(韩文)等
+  llm_description: 源语言代码，例如：zh(中文)、en(英文)、ja(日文)、ko(韩文)等。如果不提供，系统将自动检测
+  form: llm
+- name: to_language
+  type: string
+  required: true
+  label:
+    en_US: 目标语言
+  human_description:
+    en_US: 目标语言代码，例如：zh(中文)、en(英文)、ja(日文)、ko(韩文)等
+  llm_description: 目标语言代码，例如：zh(中文)、en(英文)、ja(日文)、ko(韩文)等
+  form: llm
+extra:
+  python:
+    source: tools/translate_text.py
