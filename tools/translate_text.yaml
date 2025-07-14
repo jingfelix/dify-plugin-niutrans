@@ -2,38 +2,56 @@ identity:
   name: translate_text
   author: langgenius
   label:
-    en_US: 翻译文本
+    en_US: Translate Text
+    zh_CN: 翻译文本
+    ja_JP: テキストを翻訳
 description:
   human:
-    en_US: 将文本从一种语言翻译为另一种语言
-  llm: 将文本从一种语言翻译为另一种语言
+    en_US: Translate text from one language to another
+    zh_CN: 将文本从一种语言翻译为另一种语言
+    ja_JP: テキストを他の言語に翻訳します
+  llm: Translate text from one language to another
 parameters:
 - name: text
   type: string
   required: true
   label:
-    en_US: 待翻译文本
+    en_US: Text to Translate
+    zh_CN: 待翻译文本
+    ja_JP: 翻訳するテキスト
   human_description:
-    en_US: 需要翻译的文本内容
-  llm_description: 需要翻译的文本内容
+    en_US: The text content to be translated
+    zh_CN: 需要翻译的文本内容
+    ja_JP: 翻訳対象のテキスト内容
+  llm_description: The text content to be translated
   form: llm
 - name: from_language
   type: string
   required: false
   label:
-    en_US: 源语言
+    en_US: Source Language
+    zh_CN: 源语言
+    ja_JP: ソース言語
   human_description:
-    en_US: 源语言代码，例如：zh(中文)、en(英文)、ja(日文)、ko(韩文)等
-  llm_description: 源语言代码，例如：zh(中文)、en(英文)、ja(日文)、ko(韩文)等。如果不提供，系统将自动检测
+    en_US: 'Source language code, e.g.: zh(Chinese), en(English), ja(Japanese), ko(Korean), etc.'
+    zh_CN: '源语言代码，例如：zh(中文), en(英文), ja(日文), ko(韩文)等。'
+    ja_JP: 'ソース言語コード 例: zh(中国語), en(英語), ja(日本語), ko(韓国語)など'
+  llm_description: 'Source language code, e.g.: zh(Chinese), en(English), ja(Japanese),
+    ko(Korean), etc. If not provided, the system will auto-detect'
   form: llm
 - name: to_language
   type: string
   required: true
   label:
-    en_US: 目标语言
+    en_US: Target Language
+    zh_CN: 目标语言
+    ja_JP: ターゲット言語
   human_description:
-    en_US: 目标语言代码，例如：zh(中文)、en(英文)、ja(日文)、ko(韩文)等
-  llm_description: 目标语言代码，例如：zh(中文)、en(英文)、ja(日文)、ko(韩文)等
+    en_US: 'Target language code, e.g.: zh(Chinese), en(English), ja(Japanese), ko(Korean), etc.'
+    zh_CN: '目标语言代码，例如：zh(中文), en(英文), ja(日文), ko(韩文)等。'
+    ja_JP: 'ターゲット言語コード 例: zh(中国語), en(英語), ja(日本語), ko(韓国語)など'
+  llm_description: 'Target language code, e.g.: zh(Chinese), en(English), ja(Japanese),
+    ko(Korean), etc.'
   form: llm
 extra:
   python:

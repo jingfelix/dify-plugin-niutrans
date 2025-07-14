@@ -37,8 +37,8 @@ class NiuTransCredentials(BaseModel):
         Credential(
             name="app_id",
             label="App ID",
-            help="您的应用唯一标识，在'控制台->API应用'中查看",
-            placeholder="请输入您的App ID",
+            help="Your unique application identifier, view in 'Console->API Applications'",
+            placeholder="Please enter your App ID",
             type=CredentialType.secret_input,
             required=True,
         ),
@@ -49,8 +49,8 @@ class NiuTransCredentials(BaseModel):
         Credential(
             name="apikey",
             label="API Key",
-            help="您的API密钥，在'控制台->API应用'中查看",
-            placeholder="请输入您的API Key",
+            help="Your API key, view in 'Console->API Applications'",
+            placeholder="Please enter your API Key",
             type=CredentialType.secret_input,
             required=True,
         ),
@@ -97,12 +97,12 @@ class NiuTransPlugin(BasePlugin):
                 raise Exception(f"Error code: {code}, message: {result.errorMsg}")
 
         except Exception as e:
-            raise Exception(f"凭据验证失败: {str(e)}")
+            raise Exception(f"Credential verification failed: {str(e)}")
 
     @tool(
         name="translate_text",
-        label="翻译文本",
-        description="将文本从一种语言翻译为另一种语言",
+        label="Translate Text",
+        description="Translate text from one language to another",
     )
     def translate_text(
         self,
@@ -110,9 +110,9 @@ class NiuTransPlugin(BasePlugin):
             str,
             Param(
                 name="text",
-                label="待翻译文本",
-                description="需要翻译的文本内容",
-                llm_description="需要翻译的文本内容",
+                label="Text to Translate",
+                description="The text content to be translated",
+                llm_description="The text content to be translated",
                 type=ParamType.string,
                 required=True,
             ),
@@ -121,9 +121,9 @@ class NiuTransPlugin(BasePlugin):
             str,
             Param(
                 name="from_language",
-                label="源语言",
-                description="源语言代码，例如：zh(中文)、en(英文)、ja(日文)、ko(韩文)等",
-                llm_description="源语言代码，例如：zh(中文)、en(英文)、ja(日文)、ko(韩文)等。如果不提供，系统将自动检测",
+                label="Source Language",
+                description="Source language code, e.g.: zh(Chinese), en(English), ja(Japanese), ko(Korean), etc.",
+                llm_description="Source language code, e.g.: zh(Chinese), en(English), ja(Japanese), ko(Korean), etc. If not provided, the system will auto-detect",
                 type=ParamType.string,
                 required=False,
             ),
@@ -132,15 +132,15 @@ class NiuTransPlugin(BasePlugin):
             str,
             Param(
                 name="to_language",
-                label="目标语言",
-                description="目标语言代码，例如：zh(中文)、en(英文)、ja(日文)、ko(韩文)等",
-                llm_description="目标语言代码，例如：zh(中文)、en(英文)、ja(日文)、ko(韩文)等",
+                label="Target Language",
+                description="Target language code, e.g.: zh(Chinese), en(English), ja(Japanese), ko(Korean), etc.",
+                llm_description="Target language code, e.g.: zh(Chinese), en(English), ja(Japanese), ko(Korean), etc.",
                 type=ParamType.string,
                 required=True,
             ),
         ] = "en",
     ) -> Generator:
-        """翻译文本"""
+        """Translate text"""
         data = {
             "from": from_language,
             "to": to_language,
@@ -159,7 +159,7 @@ class NiuTransPlugin(BasePlugin):
             result = TransResponse(**response.json())
 
             if result.errorCode != "":
-                raise Exception(f"翻译失败: {result.errorMsg}")
+                raise Exception(f"Translation failed: {result.errorMsg}")
 
             translated_text = result.tgtText
 
@@ -174,16 +174,16 @@ class NiuTransPlugin(BasePlugin):
             yield translated_text
 
         except Exception as e:
-            raise Exception(f"翻译请求失败: {str(e)}")
+            raise Exception(f"Translation request failed: {str(e)}")
 
 
 plugin = NiuTransPlugin(
     meta=MetaInfo(
         name="niutrans",
         author="langgenius",
-        description="使用小牛翻译API进行文本翻译",
+        description="Text translation using NiuTrans API",
         version="0.1.0",
-        label="小牛翻译",
+        label="NiuTrans",
         icon="icon.svg",
     )
 )

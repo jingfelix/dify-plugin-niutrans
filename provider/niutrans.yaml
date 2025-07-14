@@ -2,9 +2,13 @@ identity:
   author: langgenius
   name: niutrans
   label:
-    en_US: 小牛翻译
+    en_US: NiuTrans
+    zh_CN: 小牛翻译
+    ja_JP: NiuTrans翻訳
   description:
-    en_US: 使用小牛翻译API进行文本翻译
+    en_US: Text translation using NiuTrans API
+    zh_CN: 使用 NiuTrans API 进行文本翻译
+    ja_JP: NiuTrans API を使ったテキスト翻訳
   icon: icon.svg
 credentials_for_provider:
   app_id:
@@ -12,20 +16,32 @@ credentials_for_provider:
     required: true
     label:
       en_US: App ID
+      zh_CN: 应用ID
+      ja_JP: アプリID
     placeholder:
-      en_US: 请输入您的App ID
+      en_US: Please enter your App ID
+      zh_CN: 请输入您的 App ID
+      ja_JP: App ID を入力してください
     help:
-      en_US: 您的应用唯一标识，在'控制台->API应用'中查看
+      en_US: Your unique application identifier, view in 'Console->API Applications'
+      zh_CN: 您的唯一应用标识符，可在“控制台->API 应用”中查看
+      ja_JP: あなたのユニークなアプリケーションIDは「コンソール→APIアプリケーション」で確認できます
     url: ''
   apikey:
     type: secret-input
     required: true
     label:
       en_US: API Key
+      zh_CN: API密钥
+      ja_JP: APIキー
     placeholder:
-      en_US: 请输入您的API Key
+      en_US: Please enter your API Key
+      zh_CN: 请输入您的 API Key
+      ja_JP: APIキーを入力してください
     help:
-      en_US: 您的API密钥，在'控制台->API应用'中查看
+      en_US: Your API key, view in 'Console->API Applications'
+      zh_CN: 您的 API 密钥，可在“控制台->API 应用”中查看
+      ja_JP: あなたのAPIキーは「コンソール→APIアプリケーション」で確認できます
     url: ''
 tools:
 - tools/translate_text.yaml
